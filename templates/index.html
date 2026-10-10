@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | To-Do List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1>TaskFlow</h1>
+    <p class="subtitle">Organize your day, one task at a time.</p>
+
+    <form action="/add" method="POST">
+      <input type="text" name="task" placeholder="e.g. Finish Python assignment" required>
+      <button type="submit">Add</button>
+    </form>
+
+    {% if tasks %}
+      <ul>
+        {% for task in tasks %}
+          <li><span class="number">{{ loop.index }}</span>{{ task }}</li>
+        {% endfor %}
+      </ul>
+      <p class="count">{{ tasks|length }} task(s)</p>
+    {% else %}
+      <p class="empty">No tasks yet. Add your first one above.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

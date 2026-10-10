@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}My Tasks | TaskFlow{% endblock %}
+{% block content %}
+<section class="tasks-page">
+  <div class="container">
+    <div class="tasks-card">
+      <h1>My Tasks</h1>
+      <p class="sub">Organize your day, one task at a time.</p>
+
+      <form class="add-form" action="/add" method="POST">
+        <input type="text" name="task" placeholder="e.g. Finish Python assignment" maxlength="200" required>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+      {% if tasks %}
+        <ul class="task-list">
+          {% for task in tasks %}
+          <li class="task {% if task.done %}done{% endif %}">
+            <span class="number">{{ loop.index }}</span>
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-actions">
+              <form action="/toggle/{{ task.id }}" method="POST">
+                <button type="submit" class="icon-btn">{% if task.done %}Undo{% else %}Done{% endif %}</button>
+              </form>
+              <form action="/delete/{{ task.id }}" method="POST">
+                <button type="submit" class="icon-btn delete">Delete</button>
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="count">{{ tasks|length }} task(s)</p>
+      {% else %}
+        <p class="empty">No tasks yet. Add your first one above.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

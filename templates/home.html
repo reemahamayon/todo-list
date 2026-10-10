@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}TaskFlow | Organize your day{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>Get things done, <span>one task at a time.</span></h1>
+    <p>A clean, private to-do list that follows you everywhere. Sign up free and start organizing in seconds.</p>
+    <div class="hero-actions">
+      {% if user_email %}
+        <a href="/tasks" class="btn btn-primary">Go to My Tasks</a>
+      {% else %}
+        <a href="/signup" class="btn btn-primary">Get started free</a>
+        <a href="/login" class="btn btn-outline">Log in</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">Why TaskFlow?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">&#128274;</div>
+        <h3>Private to you</h3>
+        <p>Every account has its own task list. Nobody else can see or change your tasks.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#9729;</div>
+        <h3>Saved in the cloud</h3>
+        <p>Your tasks are stored safely in a database, so they are there whenever you log in.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">&#10003;</div>
+        <h3>Simple and fast</h3>
+        <p>Add, complete and delete tasks with one click. No clutter, no distractions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

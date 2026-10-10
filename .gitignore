@@ -1,0 +1,11 @@
+# Secrets: NEVER upload
+firebase-key.json
+.env
+
+# Personal data from the terminal app
+tasks.json
+
+# Python junk
+__pycache__/
+*.pyc
+.venv/

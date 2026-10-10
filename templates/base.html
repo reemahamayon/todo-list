@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}TaskFlow{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="logo">Task<span>Flow</span></a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        {% if user_email %}
+          <a href="/tasks">My Tasks</a>
+          <span class="nav-user">{{ user_email }}</span>
+          <a href="/logout" class="btn btn-outline">Log out</a>
+        {% else %}
+          <a href="/login">Log in</a>
+          <a href="/signup" class="btn btn-primary">Sign up</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="/" class="logo">Task<span>Flow</span></a>
+        <p class="footer-text">Organize your day, one task at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Log in</a>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2026 TaskFlow. Built with Python, Flask and Firebase.</p>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
